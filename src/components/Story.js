@@ -1,10 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { doArchiveStory } from '../actions/archive';
+import { inject, observer } from 'mobx-react';
 import { ButtonInline } from './Button';
 import './Story.css';
 
-const Story = ({ story, columns, onArchive }) => {
+const Story = ({ story, columns, archiveStore }) => {
   const {
     title,
     url,
@@ -29,7 +28,7 @@ const Story = ({ story, columns, onArchive }) => {
         {points}
       </span>
       <span style={{ width: columns.archive.width }}>
-        <ButtonInline onClick={() => onArchive(objectID)}>
+        <ButtonInline onClick={() => archiveStore.archiveStory(objectID)}>
           Archive
         </ButtonInline>
       </span>
@@ -37,11 +36,4 @@ const Story = ({ story, columns, onArchive }) => {
   );
 }
 
-const mapDispatchToProps = dispatch => ({
-  onArchive: id => dispatch(doArchiveStory(id)),
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(Story);
+export default inject('archiveStore')(observer(Story));

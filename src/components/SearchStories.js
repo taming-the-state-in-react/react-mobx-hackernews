@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { doFetchStories } from '../actions/story';
+import { inject, observer } from 'mobx-react';
 import Button from './Button';
+import { fetchStories } from '../api/story';
 
 const applyQueryState = query => () => ({
   query
 });
 
+@inject('storyStore') @observer
 class SearchStories extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +23,8 @@ class SearchStories extends Component {
   onSubmit(event) {
     const { query } = this.state;
     if (query) {
-      this.props.onFetchStories(query)
+      fetchStories(query)
+        .then(result => this.props.storyStore.setStories(result.hits));
 
       this.setState(applyQueryState(''));
     }
@@ -51,11 +53,4 @@ class SearchStories extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  onFetchStories: query => dispatch(doFetchStories(query)),
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(SearchStories);
+export default SearchStories;

@@ -1,9 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import {
-  getReadableStories,
-  getFetchError,
-} from '../selectors/story';
 import './Stories.css';
 
 import Story from './Story';
@@ -57,11 +52,4 @@ const StoriesHeader = ({ columns }) =>
     )}
   </div>
 
-const mapStateToProps = state => ({
-  stories: getReadableStories(state),
-  error: getFetchError(state),
-});
-
-export default connect(
-  mapStateToProps
-)(Stories);
+export default inject('storyStore')(observer(Stories));
