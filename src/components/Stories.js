@@ -1,4 +1,5 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 import './Stories.css';
 
 import Story from './Story';
@@ -25,13 +26,13 @@ const COLUMNS = {
   },
 };
 
-const Stories = ({ stories, error }) =>
+const Stories = ({ storyStore }) =>
   <div className="stories">
     <StoriesHeader columns={COLUMNS} />
 
-    { error && <p className="error">Something went wrong ...</p> }
+    { storyStore.error && <p className="error">Something went wrong ...</p> }
 
-    {(stories || []).map(story =>
+    {(storyStore.readableStories || []).map(story =>
       <Story
         key={story.objectID}
         story={story}
