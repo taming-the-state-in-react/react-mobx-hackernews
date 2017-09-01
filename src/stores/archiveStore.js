@@ -2,8 +2,10 @@ import { observable } from 'mobx';
 
 class ArchiveStore {
   @observable archivedStoryIds = [];
+
+  constructor(rootStore) {
+    this.rootStore = rootStore;
+  }
 }
 
-const archiveStore = new ArchiveStore();
-
-export default archiveStore;
+export default ArchiveStore;
