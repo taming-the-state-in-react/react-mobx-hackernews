@@ -23,7 +23,7 @@ const stories = [
 ];
 
 ReactDOM.render(
-  <App stories={stories} />,
+  <App stories={stories} onArchive={(objectID) => { console.log(objectID); }} />,
   document.getElementById('root')
 );
 registerServiceWorker();
