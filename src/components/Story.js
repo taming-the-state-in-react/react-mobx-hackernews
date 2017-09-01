@@ -1,8 +1,9 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 import { ButtonInline } from './Button';
 import './Story.css';
 
-const Story = ({ story, columns, onArchive }) => {
+const Story = ({ story, columns, archiveStore }) => {
   const {
     title,
     url,
@@ -27,7 +28,7 @@ const Story = ({ story, columns, onArchive }) => {
         {points}
       </span>
       <span style={{ width: columns.archive.width }}>
-        <ButtonInline onClick={() => onArchive(objectID)}>
+        <ButtonInline onClick={() => archiveStore.archiveStory(objectID)}>
           Archive
         </ButtonInline>
       </span>
@@ -35,4 +36,4 @@ const Story = ({ story, columns, onArchive }) => {
   );
 }
 
-export default Story;
+export default inject('archiveStore')(observer(Story));
