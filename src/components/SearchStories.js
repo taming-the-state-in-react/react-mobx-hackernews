@@ -23,9 +23,12 @@ class SearchStories extends Component {
 
   @action
   onSubmit(event) {
+    const { storyStore } = this.props;
+
     if (this.query) {
       fetchStories(this.query)
-        .then(result => this.props.storyStore.setStories(result.hits))
+        .then(result => storyStore.setStories(result.hits))
+        .catch(storyStore.setError);
 
       this.query = '';
     }

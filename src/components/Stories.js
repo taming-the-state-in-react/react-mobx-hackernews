@@ -29,6 +29,8 @@ const Stories = ({ storyStore }) =>
   <div className="stories">
     <StoriesHeader columns={COLUMNS} />
 
+    { storyStore.error && <p className="error">Something went wrong ...</p> }
+
     {(storyStore.readableStories || []).map(story =>
       <Story
         key={story.objectID}
