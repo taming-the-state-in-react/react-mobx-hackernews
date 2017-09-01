@@ -1,5 +1,9 @@
+import { useStrict } from 'mobx';
+
 import StoryStore from './storyStore';
 import ArchiveStore from './archiveStore';
+
+useStrict(true);
 
 class RootStore {
   constructor() {
