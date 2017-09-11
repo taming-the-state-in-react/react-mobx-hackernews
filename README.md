@@ -1,7 +1,7 @@
 # react-mobx-hackernews
 
 * Found in [Taming the State in React](https://roadtoreact.com/course-details?courseId=TAMING_THE_STATE)
-* [Live](https://react-mobx-hackernews.wieruch.com/)
+* [Live](https://tranquil-retreat-11447.herokuapp.com/)
 
 ## Features
 
