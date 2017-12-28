@@ -1,5 +1,7 @@
 # react-mobx-hackernews
 
+[![Build Status](https://travis-ci.org/rwieruch/react-mobx-hackernews.svg?branch=master)](https://travis-ci.org/rwieruch/react-mobx-hackernews)
+
 * Found in [Taming the State in React](https://roadtoreact.com/course-details?courseId=TAMING_THE_STATE)
 * [Live](https://tranquil-retreat-11447.herokuapp.com/)
 
