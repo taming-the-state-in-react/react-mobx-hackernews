@@ -1,9 +1,9 @@
-import { useStrict } from 'mobx';
+import { configure } from 'mobx';
 
 import StoryStore from './storyStore';
 import ArchiveStore from './archiveStore';
 
-useStrict(true);
+configure({ enforceActions: true });
 
 class RootStore {
   constructor() {
